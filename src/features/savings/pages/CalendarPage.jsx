@@ -68,11 +68,7 @@ export default function CalendarPage() {
             <strong>{month}</strong>
 
             <span>
-              {savings[index]
-                ? `${savings[index]}$`
-                : index < 10
-                  ? '100$'
-                  : ''}
+               {Number(savings[index] || 0).toLocaleString('en-US')}$
             </span>
 
             {index === 9 && (
