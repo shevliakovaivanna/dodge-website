@@ -1,0 +1,879 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #000;
+  color: #e8e8e8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: #000;
+}
+
+.header {
+  height: 58px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.logo {
+  color: #eee;
+  font-size: 19px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: #e11919;
+  font-size: 23px;
+  letter-spacing: -5px;
+  margin-left: 2px;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-icon,
+.header-exit {
+  height: 28px;
+  min-width: 28px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 15px;
+  background: #202226;
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-exit {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.header-icon:hover,
+.header-exit:hover {
+  background: #34363b;
+}
+
+main {
+  width: 100%;
+  padding: 4px 12px 20px;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #d20e0e;
+  color: #fff;
+  border: 0;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.btn:hover {
+  background: #ed1717;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn.full {
+  width: 100%;
+}
+
+.panel {
+  background: #17191d;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.field {
+  margin-bottom: 9px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 5px;
+  color: #c9cbd0;
+  font-size: 11px;
+}
+
+.field input,
+.field select {
+  display: block;
+  width: 100%;
+  height: 31px;
+  padding: 0 9px;
+  border: 0;
+  border-radius: 8px;
+  outline: none;
+  color: #f4f4f4;
+  background: #495162;
+  font-size: 11px;
+}
+
+.field input:focus,
+.field select:focus {
+  box-shadow: 0 0 0 1px #e11b1b;
+}
+
+.auth-wrap {
+  min-height: calc(100vh - 58px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8px 12px 25px;
+}
+
+.auth-card {
+  width: min(100%, 320px);
+  min-height: 255px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #17191d;
+}
+
+.auth-card h1 {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 400;
+  margin: 0 0 24px;
+}
+
+.auth-card .btn {
+  margin-top: 0;
+  height: 29px;
+  padding: 5px;
+}
+
+.auth-foot {
+  margin: 78px 0 0;
+  font-size: 10px;
+  color: #c8c8c8;
+}
+
+.auth-card.register .auth-foot {
+  margin-top: 14px;
+}
+
+.auth-foot a {
+  color: #f11a1a;
+}
+
+.role-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.role-option input {
+  accent-color: #e10d0d;
+}
+
+.auth-card.register h1 {
+  margin-bottom: 14px;
+}
+
+.auth-card.register {
+  min-height: 0;
+}
+
+.page-title {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 5px 0 15px;
+}
+
+.subtitle {
+  color: #bfc0c4;
+  font-size: 12px;
+  margin: 0 0 14px;
+}
+
+.home-page {
+  padding-top: 0;
+}
+
+.home-car {
+  height: min(46vh, 350px);
+  min-height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-car img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.home-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 4px;
+}
+
+.home-action {
+  min-height: 76px;
+  padding: 10px 8px;
+  border-radius: 9px;
+  background: #17191d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.home-action svg {
+  color: #ff2028;
+  width: 24px;
+  height: 24px;
+}
+
+.home-action strong {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.home-action span {
+  color: #777c85;
+  font-size: 9px;
+}
+
+.test-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+}
+
+.progress-info {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: #d7d7d7;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #ed111b;
+}
+
+.question-title {
+  font-size: 12px;
+  font-weight: 400;
+  margin: 16px 0 10px;
+}
+
+.question-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 42px;
+  margin-bottom: 7px;
+  padding: 7px;
+  background: #17191d;
+  border-radius: 9px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.question-option input {
+  flex-shrink: 0;
+  accent-color: #e20e17;
+}
+
+.question-option.selected {
+  outline: 1px solid #d20e0e;
+}
+
+.option-description {
+  display: block;
+  margin-top: 3px;
+  color: #a66b6b;
+  font-size: 8px;
+}
+
+.result-title {
+  margin: 3px 0 10px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.result-image {
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+  background: #17191d;
+}
+
+.result-caption {
+  margin: 5px 0 12px;
+  text-align: center;
+  font-size: 8px;
+}
+
+.result-description {
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.garage-layout {
+  display: grid;
+  grid-template-columns: 135px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.car-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 4px;
+  border-radius: 9px;
+  background: #17191d;
+}
+
+.car-choice {
+  width: 100%;
+  padding: 8px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  border: 0;
+  border-radius: 7px;
+  background: #292e38;
+  color: #e1e1e1;
+  text-align: left;
+  font-size: 9px;
+}
+
+.car-choice.active {
+  background: #353b46;
+}
+
+.car-choice.active::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #e10e16;
+}
+
+.car-display {
+  min-width: 0;
+}
+
+.car-image-box {
+  height: 180px;
+  border-radius: 9px;
+  background: #121519;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.car-price {
+  text-align: right;
+  font-size: 11px;
+  margin: 7px 0;
+}
+
+.color-options {
+  display: flex;
+  gap: 7px;
+  padding: 4px;
+  width: fit-content;
+  background: #17191d;
+  border-radius: 10px;
+}
+
+.color-dot {
+  width: 19px;
+  height: 19px;
+  border: 2px solid #42454b;
+  border-radius: 50%;
+}
+
+.color-dot.active {
+  outline: 1px solid white;
+}
+
+.garage-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.calendar-title {
+  text-align: center;
+  padding: 5px;
+  border-radius: 8px;
+  background: #17191d;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 7px;
+}
+
+.calendar-car {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: #202226;
+  font-size: 10px;
+  margin-bottom: 25px;
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.month-card {
+  min-height: 62px;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 8px;
+  background: #17191d;
+}
+
+.month-card strong {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.month-card span {
+  font-size: 15px;
+}
+
+.month-card button {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #495162;
+  color: white;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.savings-form {
+  width: min(100%, 300px);
+  margin: 16px auto;
+}
+
+.savings-form h2 {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.savings-total {
+  margin: 12px 0;
+  font-size: 11px;
+}
+
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.admin-row {
+  display: block;
+  padding: 5px 7px;
+  border-radius: 7px;
+  background: #17191d;
+  font-size: 11px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.admin-row.ready {
+  background: #263e2b;
+}
+
+.admin-row.ready .status {
+  color: #a4e5a9;
+}
+
+.notice {
+  margin: 8px 0;
+  color: #f5caca;
+  font-size: 10px;
+}
+
+@media (min-width: 900px) {
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .home-car {
+    height: 45vh;
+  }
+
+  .auth-wrap {
+    padding-top: 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .header {
+    padding: 8px 10px;
+  }
+
+  main {
+    padding: 4px 8px 15px;
+  }
+
+  .test-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .garage-layout {
+    grid-template-columns: 105px minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  .car-image-box {
+    height: 145px;
+  }
+
+  .month-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .home-actions {
+    gap: 5px;
+    margin: 0;
+  }
+
+  .home-action {
+    padding: 7px 5px;
+  }
+
+  .home-action strong {
+    font-size: 9px;
+  }
+
+  .calendar-car {
+    margin-bottom: 15px;
+  }
+}
+
+
+.home-page {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 58px);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  background-image: url('/images/backgrounds/challenger-home-backgrounds.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-color: #000;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Фотографія на весь екран */
+.home-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* Кнопки поверх фотографії */
+.home-actions {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 150px;
+  padding: 22px 16px;
+  box-sizing: border-box;
+  color: #fff;
+  background: rgba(23, 26, 31, 0.88);
+  border: 1px solid #d20e0e;
+  text-decoration: none;
+  text-align: center;
+  font-size: 17px;
+}
+
+.home-action svg {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.home-action strong {
+  font-size: 19px;
+}
+
+.home-action span {
+  font-size: 15px;
+}
+
+.home-action:hover {
+  background: #d20e0e;
+}
+
+/* Більші кнопки в хедері */
+header button,
+header a {
+  font-size: 17px;
+}
+
+header button,
+header a {
+  min-height: 44px;
+}
+
+header button svg,
+header a svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Адаптація для вузького екрана */
+@media (max-width: 700px) {
+  .home-page {
+    min-height: calc(100vh - 64px);
+    padding: 0 12px 20px;
+  }
+
+  /* Фотографія на весь екран без обрізання */
+.home-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Показує все зображення цілком, нічого не обрізаючи */
+  object-position: center; /* Центрує картинку на екрані */
+  z-index: 0;
+  background-color: #000; /* Чорний фон для пустих зон, якщо пропорції відрізняються */
+}
+
+  .home-actions {
+    gap: 8px;
+  }
+
+  .home-action {
+    min-height: 110px;
+    padding: 12px 5px;
+    gap: 8px;
+  }
+
+  .home-action svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .home-action strong {
+    font-size: 13px;
+  }
+
+  .home-action span {
+    font-size: 11px;
+  }
+}
+
+main.home-page {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  min-height: calc(100vh - 58px);
+}
+
+
+/* Збільшений гараж */
+main.garage-layout {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 24px 32px 40px;
+  grid-template-columns: minmax(230px, 300px) minmax(0, 1fr);
+  gap: 28px;
+}
+
+.car-list {
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.car-choice {
+  min-height: 52px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.car-display {
+  min-width: 0;
+  padding: 20px;
+  background: #111215;
+  border-radius: 12px;
+}
+
+.car-image-box {
+  width: 100%;
+  height: clamp(300px, 42vw, 520px);
+  border-radius: 12px;
+  background: #080808;
+  overflow: hidden;
+}
+
+.car-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.car-price {
+  margin: 18px 0;
+  font-size: 24px;
+}
+
+.color-options {
+  gap: 14px;
+  padding: 12px;
+}
+
+.color-dot {
+  width: 36px;
+  height: 36px;
+  border-width: 3px;
+}
+
+.selected-color {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #bfc0c4;
+}
+
+.garage-bottom {
+  margin-top: 24px;
+}
+
+.garage-bottom .btn {
+  padding: 14px 22px;
+  font-size: 16px;
+}
+
+@media (max-width: 700px) {
+  main.garage-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px 12px 28px;
+  }
+
+  .car-display {
+    padding: 12px;
+  }
+
+  .car-image-box {
+    height: 60vw;
+    min-height: 220px;
+    max-height: 360px;
+  }
+
+  .car-price {
+    font-size: 20px;
+  }
+}
+
